@@ -1,10 +1,18 @@
-![](https://cdn.myuuiii.com/projects/dawpresence/DAWRichPresence_v3.png)
-
 A Discord Rich Presence app for several DAWs like FL Studio and Ableton.
 
-| :----------------------------------------: | :------------------------------------------------: |
+## Supported DAWs
 
-## How to use
+- Ableton 9-12
+- FL Studio
+- REAPER
+- Renoise
+- Studio One
+- Reason 13
+- Nuendo 13
+- Cubase 13
+- Bitwig Studio
+
+## Usage
 
 - Make sure you have the latest .NET Desktop Runtime installed. You can download it [here through the official Microsoft website](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.6-windows-x64-installer).
 
@@ -13,13 +21,8 @@ A Discord Rich Presence app for several DAWs like FL Studio and Ableton.
 - Close the software by running to executable again. You can change the config to your liking.
 - Upon running the software, if it has detected a DAW that is currently supported, your Discord presence should be updated automatically.
 
-## Custom Image Key
-
-Some people might want a custom image on the rich presence. To bump the project a bit, I am making this exclusive to people that have starred this repository. For those that have, please contact `myuuiii` on Discord for more information. An example is shown below
-
-![](https://ss.myuuiii.com/7634c47d-db45-4323-bc5c-7c6ab1993ea3.png)
-
-###### config.yml
+## Configuration
+*Make sure* **config.yml** *is in the same directory as the application.*
 
 ```yml
 UpdateInterval: 00:00:03
@@ -30,4 +33,3 @@ UseCustomImage: true
 CustomImageKey: myuuiii
 DisablePopup: false
 ```
-
