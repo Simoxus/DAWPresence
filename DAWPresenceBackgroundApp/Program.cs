@@ -38,7 +38,7 @@ static class Program
         if (!ConfigurationManager.Configuration.DisablePopup)
         {
             MessageBox.Show(
-                "DAW Presence is now running in the background. Currently there is no tray icon, the software will run in the background. You can exit DAWPresence by running the executable again",
+                "DAW Presence is now running in the background. You can exit DAWPresence by running the executable again",
                 "DAW Presence", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
