@@ -5,18 +5,25 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAWPresenceBackgroundApp", "DAWPresenceBackgroundApp\DAWPresenceBackgroundApp.csproj", "{A588754F-1362-4AE0-9277-082A1B588D90}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "DAWPresenceInstallerApp", "DAWPresenceInstallerApp\DAWPresenceInstallerApp.vdproj", "{1CE27354-7CBC-5E57-55B5-A1CB8777151F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{A588754F-1362-4AE0-9277-082A1B588D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A588754F-1362-4AE0-9277-082A1B588D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A588754F-1362-4AE0-9277-082A1B588D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A588754F-1362-4AE0-9277-082A1B588D90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CE27354-7CBC-5E57-55B5-A1CB8777151F}.Debug|Any CPU.ActiveCfg = Debug
+		{1CE27354-7CBC-5E57-55B5-A1CB8777151F}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {16EB7915-CC22-47BB-8367-35AFDC5496A7}
 	EndGlobalSection
 EndGlobal
