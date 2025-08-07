@@ -9,9 +9,9 @@ namespace DAWPresenceBackgroundApp;
 
 public class ProcessCode
 {
-    private const string AppVersion = "beta-0.1.16";
+    private const string AppVersion = "0.1.17";
     private const int SwHide = 0;
-    private const string CreditText = "DAWPresence by @myuuiii";
+    private const string CreditText = "DAWPresence by @myuuiii, modified by @Simoxus";
     private static DiscordRpcClient? _client;
     private static DateTime? _startTime;
 
@@ -22,24 +22,29 @@ public class ProcessCode
         ExecuteTaskAsync().GetAwaiter().GetResult();
     }
 
-    private static void CheckLatestVersion()
+    private static async void CheckLatestVersion()
     {
-        try
+        if (ConfigurationManager.Configuration.CheckForUpdates)
         {
-            var latestVersion = new WebClient().DownloadString("https://cdn.myuu.moe/v/dawpresence.txt");
-            Console.WriteLine($"Latest version: {latestVersion}");
-
-            if (latestVersion != AppVersion)
+            try
             {
-                MessageBox.Show(
-                    $"A new version of DAW Presence is available: {latestVersion}. Please download it from the official GitHub page https://github.com/Myuuiii/DAWPresence",
-                    "DAW Presence", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                using var client = new HttpClient();
+
+                var latestVersion = await client.GetStringAsync("https://cdn.myuu.moe/v/dawpresence.txt");
+                Console.WriteLine($"Latest version: {latestVersion}");
+
+                if (latestVersion != AppVersion)
+                {
+                    MessageBox.Show(
+                        $"A new version of DAW Presence is available: {latestVersion}. Please download it from the official GitHub page https://github.com/Myuuiii/DAWPresence",
+                        "DAW Presence", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
-        }
-        catch (WebException e)
-        {
-            MessageBox.Show($"An error occurred while checking for updates: {e.Message}", "DAW Presence",
-                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch (WebException e)
+            {
+                MessageBox.Show($"An error occurred while checking for updates: {e.Message}", "DAW Presence",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 
