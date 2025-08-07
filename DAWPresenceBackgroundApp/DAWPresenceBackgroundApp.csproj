@@ -10,6 +10,7 @@
         <PlatformTarget>x64</PlatformTarget>
         <ApplicationIcon>appicon.ico</ApplicationIcon>
         <PublishSingleFile>true</PublishSingleFile>
+        <Platforms>AnyCPU;x64</Platforms>
     </PropertyGroup>
 
     <ItemGroup>
