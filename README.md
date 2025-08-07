@@ -31,5 +31,6 @@ IdleText: Not working on a project
 WorkingPrefixText: 'Working on '
 UseCustomImage: true
 CustomImageKey: myuuiii
+CheckForUpdates: false
 DisablePopup: false
 ```
