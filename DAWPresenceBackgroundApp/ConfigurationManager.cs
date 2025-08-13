@@ -5,24 +5,44 @@ namespace DAWPresenceBackgroundApp;
 
 public class ConfigurationManager
 {
-    private const string ConfigFilePath = "./config.yml";
+    // The name of the directory in AppData where the configuration file is stored
+    private const string AppDataDirectoryName = "DAWPresence";
+    // The path to the configuration file within AppData
+    private static readonly string ConfigFilePath = Path.Combine(
+        Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+        AppDataDirectoryName,
+        "config.yml"
+    );
+
     public static AppConfiguration Configuration { get; private set; } = new();
-    
+
+    public static void SaveConfiguration()
+    {
+        var serializer = new SerializerBuilder().Build();
+        var yaml = serializer.Serialize(Configuration);
+        File.WriteAllText(ConfigFilePath, yaml);
+        Console.WriteLine("Configuration Saved");
+    }
+
     public static void LoadConfiguration()
     {
-        if (!Directory.Exists(Path.GetDirectoryName(ConfigFilePath)))
-            Directory.CreateDirectory(Path.GetDirectoryName(ConfigFilePath));
+        string? configDirectory = Path.GetDirectoryName(ConfigFilePath);
+        if (configDirectory != null && !Directory.Exists(configDirectory!))
+        {
+            Directory.CreateDirectory(configDirectory!);
+        }
 
         if (File.Exists(ConfigFilePath))
         {
-            Configuration = new Deserializer().Deserialize<AppConfiguration>(File.ReadAllText(ConfigFilePath));
-            Console.WriteLine("Configuration Loaded");
+            var deserializer = new Deserializer();
+            Configuration = deserializer.Deserialize<AppConfiguration>(File.ReadAllText(ConfigFilePath));
+            Console.WriteLine("Configuration Loaded from /AppData");
         }
         else
         {
             Configuration = new AppConfiguration();
-            File.WriteAllText(ConfigFilePath, new SerializerBuilder().Build().Serialize(Configuration));
-            Console.WriteLine("Configuration Created");
+            SaveConfiguration(); // Save the initial config to the new location
+            Console.WriteLine("Configuration Created at /AppData");
         }
     }
 }
