@@ -8,9 +8,9 @@ public class DAWApplicationContext : ApplicationContext
 {
     private readonly TrayIcon _trayIcon;
 
-    public DAWApplicationContext(string configPath)
+    public DAWApplicationContext()
     {
-        _trayIcon = new TrayIcon(configPath);
+        _trayIcon = new TrayIcon();
     }
 }
 
@@ -37,8 +37,6 @@ static class Program
         ConfigurationManager.LoadConfiguration();
 
         SetStartup(ConfigurationManager.Configuration.OpenOnStartup);
-
-        string configPath = Path.Combine(AppContext.BaseDirectory, "config.yml");
 
         // If the program is started again, shut down all instances and exit
         if (Process.GetProcessesByName(ProcessName).Length > 1)
@@ -68,7 +66,7 @@ static class Program
 
         if (ConfigurationManager.Configuration.TrayIcon)
         {
-            Application.Run(new DAWApplicationContext(configPath));
+            Application.Run(new DAWApplicationContext());
         }
         else
         {
