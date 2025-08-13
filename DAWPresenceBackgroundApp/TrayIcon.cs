@@ -1,22 +1,14 @@
-﻿using Microsoft.Win32;
-using System;
-using System.Diagnostics;
-using System.Drawing;
-using System.IO;
-using System.Windows.Forms;
+﻿using System.Diagnostics;
 
 namespace DAWPresenceBackgroundApp
 {
     public class TrayIcon : IDisposable
     {
         private readonly NotifyIcon _trayIcon;
-        private readonly string _configPath;
         private readonly Icon? _customIcon;
 
-        public TrayIcon(string configPath)
+        public TrayIcon()
         {
-            _configPath = configPath;
-
             string exeDirectory = AppDomain.CurrentDomain.BaseDirectory;
             string iconPath = Path.Combine(exeDirectory, "appicon.ico"); // Make sure you have an icon file named appicon.ico in the same directory :D
 
@@ -40,7 +32,6 @@ namespace DAWPresenceBackgroundApp
                     Visible = true
                 };
             }
-
 
             var startupMenuItem = new ToolStripMenuItem
             {
@@ -69,10 +60,12 @@ namespace DAWPresenceBackgroundApp
         {
             try
             {
-                if (File.Exists(_configPath))
-                    Process.Start(new ProcessStartInfo(_configPath) { UseShellExecute = true });
+                string configPath = ConfigurationManager.ConfigFilePath;
+
+                if (File.Exists(configPath))
+                    Process.Start(new ProcessStartInfo(configPath) { UseShellExecute = true });
                 else
-                    MessageBox.Show("Config file not found!", "DAWPresence", MessageBoxButtons.OK, 
+                    MessageBox.Show("Config file not found!", "DAWPresence", MessageBoxButtons.OK,
                         MessageBoxIcon.Warning);
             }
             catch (Exception ex)
@@ -92,12 +85,12 @@ namespace DAWPresenceBackgroundApp
             Program.SetStartup(isChecked);
             if (isChecked)
             {
-                MessageBox.Show("DAWPresence will now open on startup.", "DAWPresence", MessageBoxButtons.OK, 
+                MessageBox.Show("DAWPresence will now open on startup.", "DAWPresence", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("DAWPresence will no longer open on startup.", "DAWPresence", MessageBoxButtons.OK, 
+                MessageBox.Show("DAWPresence will no longer open on startup.", "DAWPresence", MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
             }
 
