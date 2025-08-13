@@ -1,28 +1,29 @@
+using DAWPresence;
+using DiscordRPC;
+using System.Diagnostics;
 using System.Net;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using DAWPresence;
-using DiscordRPC;
 using YamlDotNet.Serialization;
 
 namespace DAWPresenceBackgroundApp;
 
 public class ProcessCode
 {
-    private const string AppVersion = "0.1.17";
+    private const string AppVersion = "0.1.18";
     private const int SwHide = 0;
-    private const string CreditText = "DAWPresence by @myuuiii, modified by @Simoxus";
+    private const string CreditText = "DAWPresence by @myuuiii, improved by @Simoxus";
     private static DiscordRpcClient? _client;
     private static DateTime? _startTime;
 
-    public ProcessCode()
+    public static async Task ProcessCodeAsync()
     {
         ApplicationConfiguration.Initialize();
-        CheckLatestVersion();
-        ExecuteTaskAsync().GetAwaiter().GetResult();
+        await CheckLatestVersion();
+        await ExecuteTaskAsync();
     }
 
-    private static async void CheckLatestVersion()
+    private static async Task CheckLatestVersion()
     {
         if (ConfigurationManager.Configuration.CheckForUpdates)
         {
@@ -30,19 +31,46 @@ public class ProcessCode
             {
                 using var client = new HttpClient();
 
-                var latestVersion = await client.GetStringAsync("https://cdn.myuu.moe/v/dawpresence.txt");
-                Console.WriteLine($"Latest version: {latestVersion}");
+                // Fetch the latest version string from the GitHub repo
+                var latestVersionRaw = await client.GetStringAsync("https://raw.githubusercontent.com/Simoxus/DAWPresence/main/VERSION.txt");
+                var latestVersionString = latestVersionRaw.Trim();
 
-                if (latestVersion != AppVersion)
+                Console.WriteLine($"Latest version: {latestVersionString}. Sending request to user for update.");
+
+                // Parse both version strings into System.Version objects
+                if (Version.TryParse(AppVersion, out Version? currentVersion) &&
+                    Version.TryParse(latestVersionString, out Version? latestVersion))
                 {
-                    MessageBox.Show(
-                        $"A new version of DAW Presence is available: {latestVersion}. Please download it from the official GitHub page https://github.com/Myuuiii/DAWPresence",
-                        "DAW Presence", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    // Check if the latest version is greater than the current version
+                    if (latestVersion > currentVersion)
+                    {
+                        DialogResult dialogResult = MessageBox.Show(
+                            $"A new version of DAWPresence is available: {latestVersionString}. Do you want to download it from the official GitHub page?",
+                            "DAWPresence", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            try
+                            {
+                                // Open the GitHub page using the default browser
+                                Process.Start(new ProcessStartInfo("https://github.com/Simoxus/DAWPresence") { UseShellExecute = true });
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show($"Could not open the GitHub link: {ex.Message}", "DAWPresence",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Could not parse version numbers for CheckLatestVersion function.");
                 }
             }
-            catch (WebException e)
+            catch (HttpRequestException e)
             {
-                MessageBox.Show($"An error occurred while checking for updates: {e.Message}", "DAW Presence",
+                MessageBox.Show($"An error occurred while checking for updates: {e.Message}", "DAWPresence",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
