@@ -349,6 +349,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -387,6 +403,20 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_FF0973775C8E4F61B28AB9E60574779F"
+            {
+            "Name" = "8:DAWPresenceBackgroundApp.exe"
+            "Condition" = "8:"
+            "Object" = "8:_4699E896053B44CFA8AA7D38B3104E2D"
+            "FileType" = "3:2"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:/uninstall"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_6ECC430E_8D16_4C18_8BA5_848A6DF1318E"
+            "InstallerClass" = "11:FALSE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -559,7 +589,7 @@
             "SourcePath" = "8:..\\DAWPresenceBackgroundApp\\bin\\Release\\net8.0-windows\\win-x64\\config.yml"
             "TargetName" = "8:config.yml"
             "Tag" = "8:"
-            "Folder" = "8:_0C901DF4607D47FAA138CBD1304CDD7D"
+            "Folder" = "8:_83EA32D3B9054D3B97BE9A1D321256EA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1314,6 +1344,28 @@
                 {
                 }
             }
+            "{1525181F-901A-416C-8A58-119130FE478E}:_C7858D07AB71400383E2464653C8DE5B"
+            {
+            "Name" = "8:#1915"
+            "AlwaysCreate" = "11:FALSE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Property" = "8:AppDataFolder"
+                "Folders"
+                {
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_83EA32D3B9054D3B97BE9A1D321256EA"
+                    {
+                    "Name" = "8:DAWPresence"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_3E29B305022F4BD189C3C616C89DBD2B"
+                        "Folders"
+                        {
+                        }
+                    }
+                }
+            }
         }
         "LaunchCondition"
         {
@@ -1330,24 +1382,24 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:DAWPresence"
-        "ProductCode" = "8:{0B05F421-6072-4E68-8DB4-E5E5800E9747}"
-        "PackageCode" = "8:{EC6D09AA-0354-4828-868E-C31509790D58}"
+        "ProductCode" = "8:{CD9A8B23-7E7A-48D0-B518-E547B189EE4A}"
+        "PackageCode" = "8:{BE88B902-C336-4967-A0D9-4CDE2FF2B1C1}"
         "UpgradeCode" = "8:{52B9A9DE-4519-47F8-AD33-1D968920B937}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:FALSE"
-        "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.1.17"
+        "InstallAllUsers" = "11:TRUE"
+        "ProductVersion" = "8:0.1.18"
         "Manufacturer" = "8:Myuuiii, Simoxus"
         "ARPHELPTELEPHONE" = "8:"
-        "ARPHELPLINK" = "8:"
+        "ARPHELPLINK" = "8:https://github.com/Simoxus/DAWPresence/issues"
         "Title" = "8:DAWPresenceInstallerApp"
         "Subject" = "8:"
         "ARPCONTACT" = "8:Myuuiii, Simoxus"
         "Keywords" = "8:"
-        "ARPCOMMENTS" = "8:A Discord Rich Presence app for several DAWs like FL Studio and Ableton, modified to remove update checks "
-        "ARPURLINFOABOUT" = "8:https://github.com/Myuuiii"
+        "ARPCOMMENTS" = "8:"
+        "ARPURLINFOABOUT" = "8:https://github.com/Simoxus"
         "ARPPRODUCTICON" = "8:_1C572AC8E6614E50BBCAC81D36FB4256"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
@@ -1504,7 +1556,7 @@
                             "ContextData" = "8:1;True=1;False=0"
                             "Attributes" = "3:0"
                             "Setting" = "3:0"
-                            "Value" = "3:1"
+                            "Value" = "3:0"
                             "DefaultValue" = "3:1"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1560,8 +1612,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1202"
+                            "Setting" = "3:2"
+                            "Value" = "8:Please do not change your directory to something other than an elevated directory. It may cause issues with startup registry keys."
                             "DefaultValue" = "8:#1202"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1624,7 +1676,7 @@
                             "ContextData" = "8:1;True=1;False=0"
                             "Attributes" = "3:0"
                             "Setting" = "3:0"
-                            "Value" = "3:1"
+                            "Value" = "3:0"
                             "DefaultValue" = "3:1"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1689,8 +1741,8 @@
                             "Type" = "3:3"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1202"
+                            "Setting" = "3:2"
+                            "Value" = "8:Please do not change your directory to something other than an elevated directory. It may cause issues with startup registry keys."
                             "DefaultValue" = "8:#1202"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1805,8 +1857,8 @@
                             "Type" = "3:15"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1258"
+                            "Setting" = "3:2"
+                            "Value" = "8:Good job! Enjoy DAWPresence :)"
                             "DefaultValue" = "8:#1258"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -1850,7 +1902,7 @@
                             "ContextData" = "8:1;True=1;False=0"
                             "Attributes" = "3:0"
                             "Setting" = "3:0"
-                            "Value" = "3:1"
+                            "Value" = "3:0"
                             "DefaultValue" = "3:1"
                             "UsePlugInResources" = "11:TRUE"
                             }
