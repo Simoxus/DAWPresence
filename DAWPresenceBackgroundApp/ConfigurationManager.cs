@@ -8,7 +8,7 @@ public class ConfigurationManager
     // The name of the directory in AppData where the configuration file is stored
     private const string AppDataDirectoryName = "DAWPresence";
     // The path to the configuration file within AppData
-    private static readonly string ConfigFilePath = Path.Combine(
+    public static readonly string ConfigFilePath = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
         AppDataDirectoryName,
         "config.yml"
