@@ -14,24 +14,34 @@ A Discord Rich Presence app for several DAWs like FL Studio and Ableton.
 
 ## Usage
 
-- Make sure you have the latest .NET Desktop Runtime installed. You can download it [here through the official Microsoft website](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.6-windows-x64-installer).
+**Note:** *If you run into issues with running the application, make sure you have the .NET Desktop Runtime 8.0.6 installed. You can download it [here, through the official Microsoft website](https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-8.0.6-windows-x64-installer).*
 
 - Download the latest release from the [releases](https://github.com/Simoxus/DAWPresence/releases/) tab.
 - Run the install wizard to unpack the application.
-- Once you launch DAWPresence, the application will continute to run in the background.
-- Close the software by running the executable again. You can change the config to your liking using config.yml
-- Upon running the software, if it has detected a DAW that is currently supported, your Discord presence should be updated automatically.
+- Once you launch DAWPresence, the application will continute to run in the background. You can disable this popup in the **config.yml** file.
+- Close the software by running the executable again.
+- Upon running the software, if it has detected a DAW that is currently supported, your Discord presence will be updated automatically.
+
+## Performance
+This application is pretty lightweight, and only uses about 10 MB of RAM consistently. Checking for updates or enabling the Debug option may increase it to 15 MB temporarily.
 
 ## Configuration
-*Make sure* **config.yml** *is in the same directory as the application.*
+*This **config.yml** file should be inside of /AppData/Roaming/DAWPresence. If it isn't, make sure to run the application at least once so it can generate the file/directory.*
 
 ```yml
 UpdateInterval: 00:00:03
 Offset: 00:00:00
 IdleText: Not working on a project
-WorkingPrefixText: 'Working on '
-UseCustomImage: true
+WorkingPrefixText: ''
+UseCustomImage: false
 CustomImageKey: myuuiii
-CheckForUpdates: false
+OpenOnStartup: false
+TrayIcon: true
 DisablePopup: false
+CheckForUpdates: false
+Debug: false
 ```
+
+## Special Thanks
+**Myuuiii**: For making the darn thing :)
+**Simoxus**: For improving the darn thing :)
