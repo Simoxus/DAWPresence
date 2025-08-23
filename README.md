@@ -1,4 +1,6 @@
-A Discord Rich Presence app for several DAWs like FL Studio and Ableton.
+A fork of the Discord Rich Presence app for DAWs (FL Studio, Ableton, and more), expanded with numerous QoL improvements
+
+_Please show [Myuuiii](https://github.com/Myuuiii) some love for their hard work, they're a great developer :)_
 
 ## Supported DAWs
 
@@ -43,6 +45,6 @@ Debug: false
 ```
 
 ## Special Thanks
-**Myuuiii**: For making the darn thing :)
+**Myuuiii**: For making the darn thing :D
 
-**Simoxus**: For improving the darn thing :)
+**Simoxus**: For improving the darn thing (yet only slightly lol) :)
