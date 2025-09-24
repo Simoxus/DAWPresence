@@ -3,10 +3,11 @@ A fork of the Discord Rich Presence app for DAW status displays (FL Studio, Able
 _Please show [Myuuiii](https://github.com/Myuuiii) some love for their hard work, they're a great developer :)_
 ##### ^ also this repository might be outdated since she's making a ton of great changes :joy:
 
-## Supported DAWs
+## Supported "DAWs"
 
 - Ableton 9-12
 - FL Studio
+- FMOD Studio
 - REAPER
 - Renoise
 - Studio One
